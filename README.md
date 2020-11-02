@@ -19,7 +19,7 @@ However, i have composed the whole workflow, meaning you only require 2 simple s
 ##### first import the package
 
 ```
-const lipanampesa = require('lipanampesa_simplified')
+const lnp = require('lipanampesa_simplified')
 ```
 
 #### Required credentials
