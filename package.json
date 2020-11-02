@@ -1,0 +1,19 @@
+{
+  "name": "lipanampesa",
+  "version": "1.0.0",
+  "description": "Simple way to integrate lipa na mpesa to your app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lipanampesa",
+    "safaricom"
+  ],
+  "author": "billy kagwe",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1"
+  }
+}
