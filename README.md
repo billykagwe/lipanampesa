@@ -15,19 +15,27 @@ Safaricom documentation requires a couple of steps
   -finally initiates a transaction -
   
 However, i have composed the whole workflow, meaning you only require 2 simple steps to get up and running
--first import the package
-const lipanampesa = require('lipanampesa_simplified')
 
-//Required credentials
+##### first import the package
+
+```
+const lipanampesa = require('lipanampesa_simplified')
+```
+
+#### Required credentials
 - You can use the test shortcode and passkey obtained from this site - https://developer.safaricom.co.ke/test_credentials
 - consumer_key and consumer_secret are provided after you register your app in daraja api portal
 - AccountReference is name that appears on pop up alert on phone ('keep it to max of 12 characters)
 - TransactionDesc - Description of your transaction (max of 13 characters)
+- CallBackURL - This is a route you specify to receive transaction response from safaricom 
+															(like transaction was completed or incomplete transaction incase of failure, safaricom have good error response so it will be clear)
 
 
--You would probably put the credentials in .env file and import them
+#### implementation
+(You would probably put the credentials in .env file and import them)
 
-
+##### credentials parameter
+```
 const credentials = {
   ShortCode: "174379",
   passkey: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
@@ -39,7 +47,13 @@ const credentials = {
   consumer_secret: "hDL7TyheQSxzrbox"
 };
 
+```
+
+##### setup your credentials
+
+```
 const initiate_transaction = lnp.transact(credentials);
+```
 
 //fork method runs the transaction. 
 -it requires two functions on left and right
@@ -48,11 +62,20 @@ const initiate_transaction = lnp.transact(credentials);
 - on the left you handle error - this could be like display an error
 - on the right you handle success - this could be like send a success msg -(transaction loading)
 
+##### provide phonenumber and amount of the client
+
+```
 initiate_transaction({ PhoneNumber: "254714415603", Amount: "1" })
 .fork(
-  console.log, //handle failure
-  console.log //handle success
+  console.log,
+  console.log
 );
+
+```
+
+#### Dependencies
+moment - for date formatting
+node-fetch - for handling requests on nodejs
 
 The package removes obvious code and gives you minimal and necessary input to achieve your goal
 I do not work at safaricom and may have missed something. 
