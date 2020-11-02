@@ -138,7 +138,7 @@ const get_credentials = (creds) => {
   returns a Task Result that we can fork to handle error or success
 
 */
-const transact = (creds) => ({ PhoneNumber, Amount }) =>
+export const transact = (creds) => ({ PhoneNumber, Amount }) =>
   Task.of({
     ...creds,
     ACCESS_TOKEN_URL,
